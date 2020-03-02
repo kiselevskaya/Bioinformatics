@@ -73,3 +73,10 @@ pattern_to_number_and_back.py
         5/4 = 1 R 1
         1/4 = 0 R 1
         Take the remainders from the bottom up and you get: 1110331, corresponding lexicographically to ﻿CCCAGGC
+
+
+computing_frequencies.py
+    computing_frequencies(text, k)
+        Initialises every element in the frequency array to zero (4k operations).
+        Slides through the text and for each k-mer pattern that encountered, adds 1 to the value of the frequency array corresponding to pattern
+        The output is a frequency array as a list.
