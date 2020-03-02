@@ -57,6 +57,18 @@ class TestPatternToNumberAndBack(unittest.TestCase):
         pattern = 'ACCCATTC'
         self.assertEqual(number_to_pattern(number, k), pattern)
 
+    def test_number_to_pattern_3(self):
+        number = 9904
+        k = 7
+        pattern = 'GCGGTAA'
+        self.assertEqual(number_to_pattern(number, k), pattern)
+
+    def test_number_to_pattern_4(self):
+        number = 45
+        k = 4
+        pattern = 'AGTC'
+        self.assertEqual(number_to_pattern(number, k), pattern)
+
     def test_pattern_to_number_recursion_0(self):
         pattern = 'ATGCAA'
         number = 912

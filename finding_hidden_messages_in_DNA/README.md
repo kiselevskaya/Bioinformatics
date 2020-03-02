@@ -20,6 +20,13 @@ pattern_count.py
         For each pattern number (index in frequency_array) if the count is maximal than the number (index) is transcribed to pattern and remembered to frequent_patterns.
         Note: the faster_frequent_words is fast for small k only.
 
+    frequent_words_by_sorting(text, k)
+        Imports pattern_to_number_and_back.
+        Adds the index of each pattern to index_array and sort the list.
+        Counts and adds to count_array what number of times the index appeared. Finds the maximum number of times.
+        Transcribes the most frequent number (index) to patterns.
+        The output is a list of the most frequent patterns.
+
 
 reverse_complement.py
     reverse_complement(pattern)
@@ -71,6 +78,11 @@ pattern_to_number_and_back.py
         7 - AAAACT ([0*(4^5)] + [0*(4^4)] + [0*(4^3)] + [0*(4^2)] + [1*(4^1)] + [3*(4^0)])
 
     number_to_pattern(number, k)
+        When computing pattern (eg. number_to_pattern(9904, 7)), divide 9904 by 4 to obtain a quotient of 2476 and a remainder of 0.
+        This remainder represents the final nucleotide of pattern, or NumberToSymbol(0) = A.
+        Then iterate this process, dividing each subsequent quotient by 4, overall times dividing equal k.
+        The symbols in the nucleotide column, read upward from the bottom, yield pattern 'GCGGTAA'.
+
         To go backward from a base-anything number, you divide the final number (5437  in this case) by the base, 4,  k = 7 times, keeping track of the remainder: ﻿﻿
         5437 / 4 = 1359 R 1
         1359 / 4 = 339 R 3
