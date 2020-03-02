@@ -81,6 +81,16 @@ pattern_to_number_and_back.py
         1/4 = 0 R 1
         Take the remainders from the bottom up and you get: 1110331, corresponding lexicographically to ﻿CCCAGGC
 
+    pattern_to_number_recursion(pattern)
+        If removed the final symbol from all lexicographically ordered DNA 3-mers, obtain a lexicographic order of 2-mers, where each 2-mer is repeated four times.
+        Thus, the number of 3-mers occurring before AGT is equal to four times the number of 2-mers occurring before AG plus the number of 1-mers occurring before T.
+        Therefore,
+        PatternToNumber(AGT) = 4 · PatternToNumber(AG) + SymbolToNumber(T) = 8 + 3 = 11
+
+        If removed the final symbol of pattern, denoted LastSymbol(Pattern), then will be obtained a (k − 1)-mer that denoted as Prefix(Pattern).
+        The observation above therefore generalizes to the following formula:
+        PatternToNumber(Pattern) = 4 · PatternToNumber(Prefix(Pattern)) + SymbolToNumber(LastSymbol(Pattern))
+
 
 computing_frequencies.py
     computing_frequencies(text, k)

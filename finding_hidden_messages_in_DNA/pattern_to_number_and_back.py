@@ -22,6 +22,16 @@ def number_to_pattern(number, k):
     return pattern
 
 
+def pattern_to_number_recursion(pattern):
+    order = {'A': 0, 'C': 1, 'G': 2, 'T': 3}
+    number = 0
+    if len(pattern) == 0:
+        return number
+    symbol = pattern[-1]
+    prefix = pattern[:-1]
+    return 4 * pattern_to_number_recursion(prefix) + order[symbol]
+
+
 class TestPatternToNumberAndBack(unittest.TestCase):
 
     def test_pattern_to_number(self):
@@ -46,6 +56,26 @@ class TestPatternToNumberAndBack(unittest.TestCase):
         k = 8
         pattern = 'ACCCATTC'
         self.assertEqual(number_to_pattern(number, k), pattern)
+
+    def test_pattern_to_number_recursion_0(self):
+        pattern = 'ATGCAA'
+        number = 912
+        self.assertEqual(pattern_to_number_recursion(pattern), number)
+
+    def test_pattern_to_number_recursion_1(self):
+        pattern = 'CCCATTC'
+        number = 5437
+        self.assertEqual(pattern_to_number_recursion(pattern), number)
+
+    def test_pattern_to_number_recursion_2(self):
+        pattern = 'ACCCATTC'
+        number = 5437
+        self.assertEqual(pattern_to_number_recursion(pattern), number)
+
+    def test_pattern_to_number_recursion_3(self):
+        pattern = 'CGCTCGCGAAGCAGGTAC'
+        number = 27755844273
+        self.assertEqual(pattern_to_number_recursion(pattern), number)
 
 
 if __name__ == '__main__':
