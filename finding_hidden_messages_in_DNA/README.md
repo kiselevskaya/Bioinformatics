@@ -13,6 +13,13 @@ pattern_count.py
         Finds the most frequent patterns in the frequency_map dictionary.
         The output is a list of the most common patterns.
 
+    faster_frequent_words(text, k)
+        Imports computing_frequencies function.
+        Initializes frequent_patterns list.
+        Sets list of patterns numbers and they count (frequency_array). Finds max count in this list.
+        For each pattern number (index in frequency_array) if the count is maximal than the number (index) is transcribed to pattern and remembered to frequent_patterns.
+        Note: the faster_frequent_words is fast for small k only.
+
 
 reverse_complement.py
     reverse_complement(pattern)
@@ -79,4 +86,4 @@ computing_frequencies.py
     computing_frequencies(text, k)
         Initialises every element in the frequency array to zero (4k operations).
         Slides through the text and for each k-mer pattern that encountered, adds 1 to the value of the frequency array corresponding to pattern
-        The output is a frequency array as a list.
+        The output is a frequency array as a list where index corresponds to pattern number.
