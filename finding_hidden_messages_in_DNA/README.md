@@ -143,6 +143,7 @@
     Output:
         - integer corresponding to nucleotide pattern
 
+
 #   computing_frequencies.py
 **computing_frequencies(text, k)**
 
@@ -154,20 +155,53 @@
 
 
 #   skew_array.py
-**skew_array(genome)**
+Replication of a reverse half-strand proceeds quickly, it lives double-stranded for most of its life.
+Forward half-strand spends a much larger single-stranded and has a much higher mutation rate.
 
-    Defines Skew_i(Genome) as the difference between the total number of occurrences of G and the total number of occurrences of C in the first i nucleotides of Genome. 
-    Computes Skew_i+1(Genome) from Skew_i(Genome) according to the nucleotide in position i of Genome.
-    If this nucleotide is G, then Skew_i+1(Genome) = Skew_i(Genome) + 1;
-    if this nucleotide is C, then Skew_i+1(Genome)= Skew_i(Genome) – 1;
-    otherwise, Skew_i+1(Genome) = Skew_i(Genome).
+C is more frequent on the reverse half-strand than on the forward half-strand.
+    C (cytosine) has a tendency to mutate into T (thymine) through **deamination** process.
+G (guanine) is less frequent on the reverse half-strand than on the forward half-strand.
+    Since C-G base pairs eventually change into T-A, deamination results in the decrease in guanine (G) on the reverse half-strand.
+A and T are practically identical.
+
+Finds the differences in G and C into skew_array starting with first i nucleotides of genome as 0.
+Next in skew_array will be +1 if G, -1 if C, the same if A or T.
+Skew should achieve a minimum at the position where the reverse half-strand ends and the forward half-strand begins, which is exactly the location of ori!
+
+**skew_array(genome)**       
+    
+    Counts differences in G and C in each position of a genome.
     
     Output:
         - list of skew
 
 **minimum_skew(genome)**
 
-    Finds all minimizing Skew_i (Genome) among all values of i (from 0 to |Genome|).
+    Finds all minimizing skew among all values of i (from 0 to |Genome|).
     
     Output:
-        - list of positions with a minimum amount of G (guanine)
+        - list of positions with a minimum amount of G (guanine), the location of ori.
+
+
+#   hamming_distance.py
+Position i in k-mers p1 … pk and q1 … qk is a mismatch if pi ≠ qi.
+Eg. CGAAT and CGGAC have 2 mismatches (**Hamming distance**).
+
+**hamming_distance(p, q)**
+
+    Compute the Hamming distance between two strings (p and q).
+     Output: 
+        - integer number of mismatches
+        
+**approximate_pattern_matching(text, pattern, d)**
+    
+    Slides a window pattern length through the text and compare patterns considering number of mismatches (d).
+    Finds all approximate occurrences of a pattern.
+    
+    Output:
+        - list of all started positions of approximate pattern
+    
+
+
+    
+
