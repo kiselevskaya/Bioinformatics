@@ -3,22 +3,19 @@
 #   pattern_count.py
 **pattern_count(text, pattern)**
 
-    Counts how many times the given pattern appears in the text.
-    
+    Counts how many times the given pattern appears in the text.    
     Output:
         -integer
     
 **frequency_map(text, k)**
 
-    Slides through the text and counts all patterns length k.
-    
+    Slides through the text and counts all patterns length k.    
     Output:
         - dictionary where keys are patterns and values are their count
 
 **frequent_words(text, k)**
 
-    Finds the most frequent patterns in the frequency_map dictionary.
-    
+    Finds the most frequent patterns in the frequency_map dictionary.    
     Output:
         - list of the most common patterns
 
@@ -48,7 +45,6 @@
 **reverse_complement(pattern)**
 
     Writes the complement of each nucleotide in the pattern into a string, then reversing the resulting string.
-    
     Output:
         - string that is a reverse complement of the given pattern
 
@@ -57,7 +53,6 @@
 **pattern_matching(pattern, genome)**
 
     Slides through the genome and if finds a match with the pattern remembers index of started position.
-    
     Output:
         - list of integers specifying all starting positions
 
@@ -149,7 +144,7 @@
 
     Initialises every element in the frequency array to zero (4k operations).
     Slides through the text and for each k-mer pattern that encountered, adds 1 to the value of the frequency array corresponding to pattern
-       
+    
     Output:
         - frequency array as a list where index corresponds to pattern number.
 
@@ -170,15 +165,13 @@ Skew should achieve a minimum at the position where the reverse half-strand ends
 
 **skew_array(genome)**       
     
-    Counts differences in G and C in each position of a genome.
-    
+    Counts differences in G and C in each position of a genome.    
     Output:
         - list of skew
 
 **minimum_skew(genome)**
 
-    Finds all minimizing skew among all values of i (from 0 to |Genome|).
-    
+    Finds all minimizing skew among all values of i (from 0 to |Genome|).    
     Output:
         - list of positions with a minimum amount of G (guanine), the location of ori.
 
@@ -189,19 +182,22 @@ Eg. CGAAT and CGGAC have 2 mismatches (**Hamming distance**).
 
 **hamming_distance(p, q)**
 
-    Compute the Hamming distance between two strings (p and q).
+    Compute the Hamming distance between two strings (p and q).    
      Output: 
         - integer number of mismatches
         
 **approximate_pattern_matching(text, pattern, d)**
     
     Slides a window pattern length through the text and compare patterns considering number of mismatches (d).
-    Finds all approximate occurrences of a pattern.
+    Finds all approximate occurrences of a pattern.    
     
     Output:
         - list of all started positions of approximate pattern
     
+**approximate_pattern_count(text, pattern, d)**
 
-
+    Couns approximate matching(no more than d) patterns.    
+    Output:
+         - integer
     
 
