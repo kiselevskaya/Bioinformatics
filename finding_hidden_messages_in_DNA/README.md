@@ -265,3 +265,30 @@ The goal is to generate the d-neighborhood Neighbors(Pattern, d), the set of all
     
     Output:
         - set of all k-mers whose Hamming distance is d
+
+**frequent_words_with_mismatches_sorting(text, k, d)**
+
+    Reduces the Frequent Words with Mismatches Problem to sorting.
+    It first generates all neighbors (with up to d mismatches) for all k-mers in Text and combines them all into an array
+    Then sort this array, count how many times each k-mer appears in the sorted array, and then return the k-mers that occur the maximum number of times.
+    
+     FrequentWordsWithMismatches(Text, k, d)
+        FrequentPatterns ← an empty set
+        Neighborhoods ← an empty list
+        for i ← 0 to |Text| − k
+            add Neighbors(Text(i, k), d) to Neighborhoods
+        form an array NeighborhoodArray holding all strings in Neighborhoods
+        for i ← 0 to |Neighborhoods| − 1
+            Pattern ← NeighborhoodArray(i) 
+            Index(i) ← PatternToNumber(Pattern)
+            Count(i) ← 1
+        SortedIndex ← Sort(Index)
+        for i ← 0 to |Neighborhoods| − 2 
+            if SortedIndex(i) = SortedIndex(i + 1)
+                Count(i + 1) ← Count(i) + 1
+       maxCount ← maximum value in array Count
+       for i ← 0 to |Neighborhoods| − 1
+           if Count(i) = maxCount
+               Pattern ← NumberToPattern(SortedIndex(i), k)
+               add Pattern to FrequentPatterns
+       return FrequentPatterns

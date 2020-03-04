@@ -1,6 +1,5 @@
 
 
-import timeit
 from hamming_distance import *
 
 
@@ -36,7 +35,8 @@ def frequent_words_with_mismatches_sorting(text, k, d):
     neighborhoods = []
     indexes = []
     for i in range(len(text) - k + 1):
-        neighborhoods += (list(neighbors(text[i:i+k], d)))
+        # neighborhoods += (list(neighbors(text[i:i+k], d)))
+        neighborhoods += (list(neighbors(text[i:i+k], d)))+(list(neighbors(reverse_complement(text[i:i+k]), d)))
     for j in range(len(neighborhoods)):
         indexes.append(pattern_to_number(neighborhoods[j]))
     count = [1] * len(indexes)
@@ -50,15 +50,3 @@ def frequent_words_with_mismatches_sorting(text, k, d):
             pattern = number_to_pattern(sorted_index[m], k)
             frequent_patterns.add(pattern)
     return frequent_patterns
-
-
-start = timeit.default_timer()
-
-text = 'AATCCTCCGGGCGGGTATCTGCCGGGCTGCCGGGCCTCCTGCTATCGGGCTGCCGGGTATTATTATAATTATTATCGGGTATCCTCCTGCAATCTGCTATCCTCCCTCCTGCCTGCTATCGGGTATTATTATAATCTGCCCTCAATCCTCAATCTGCTATCTGCTATCTGCCCTCCCTCCTGCCGGGCGGGAATTATCGGGCGGGCGGGTATCCTCCTGCCGGGCGGGCTGCCTGCTATCTGCAATCTGCCTGCCGGGCGGGTATCTGCCTGCAATCGGGCTGCCCTCCTGCCCTCCCTCAATCCTCTATCTGCCCTCCCTC'
-k, d = 5, 3
-print(frequent_words_with_mismatches_sorting(text, k, d))   # {'CGCCG'}
-
-stop = timeit.default_timer()
-print("Program Executed in", stop-start)
-
-
