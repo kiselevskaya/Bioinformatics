@@ -216,3 +216,52 @@ Eg. CGAAT and CGGAC have 2 mismatches (**Hamming distance**).
     
     Output:
         - list of patterns (lexicographical)
+
+
+#   neighbors.py
+
+The goal is to generate the d-neighborhood Neighbors(Pattern, d), the set of all k-mers whose Hamming distance from Pattern does not exceed d.
+
+**immediate_neighbors(pattern)**
+
+    Generates the 1-neigborhood of Pattern using the following pseudocode.
+    
+    ImmediateNeighbors(Pattern)
+        Neighborhood ← the set consisting of single string Pattern
+        for i = 1 to |Pattern|
+            symbol ← i-th nucleotide of Pattern
+            for each nucleotide x different from symbol
+                Neighbor ← Pattern with the i-th nucleotide substituted by x
+                add Neighbor to Neighborhood
+        return Neighborhood
+        
+    Output:
+        - set of all k-mers whose Hamming distance is 1
+
+**neighbors(pattern, d)**
+    
+    For generating Neighbors(Pattern, d) remove the first symbol of Pattern (denoted FirstSymbol(Pattern)), then obtain a (k − 1)-mer that we denote by Suffix(Pattern).
+    Consider a (k − 1)-mer Pattern’ belonging to Neighbors(Suffix(Pattern), d).
+    By the definition of the d-neighborhood Neighbors(Suffix(Pattern), d), we know that HammingDistance(Pattern′, Suffix(Pattern)) is either equal to d or less than d.
+    In the first case, add FirstSymbol(Pattern) to the beginning of Pattern’ in order to obtain a k-mer belonging to Neighbors(Pattern, d).
+    In the second case, add any symbol to the beginning of Pattern’ and obtain a k-mer belonging to Neighbors(Pattern, d).
+    
+    The notation symbol • Text to denote the concatenation of a character symbol and a string Text, e.g., A•GCATG = AGCATG.
+    
+    Neighbors(Pattern, d)
+        if d = 0
+            return {Pattern}
+        if |Pattern| = 1 
+            return {A, C, G, T}
+        Neighborhood ← an empty set
+        SuffixNeighbors ← Neighbors(Suffix(Pattern), d)
+        for each string Text from SuffixNeighbors
+            if HammingDistance(Suffix(Pattern), Text) < d
+                for each nucleotide x
+                    add x • Text to Neighborhood
+            else
+                add FirstSymbol(Pattern) • Text to Neighborhood
+        return Neighborhood
+    
+    Output:
+        - set of all k-mers whose Hamming distance is d
