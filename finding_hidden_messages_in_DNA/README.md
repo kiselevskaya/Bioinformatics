@@ -200,4 +200,19 @@ Eg. CGAAT and CGGAC have 2 mismatches (**Hamming distance**).
     Output:
          - integer
     
+**frequent_words_with_mismatches(text, k, d)**
 
+    Finds most frequent k-mer with up to d mismatches in text simply counting approximate patterns for each possiable patterns (4**k) and finding the maximizing  count.
+    Pattern does not need to actually appear as a substring of text.
+    
+    Output:
+        - list of patterns (lexicographical)
+        
+**frequent_words_with_mismatches_and_reverse(text, k, d)**
+
+    Finds most frequent k-mer with up to d mismatches and reverse matches in the text.
+    Count(pattern)+count(reverse pattern) and finding the maximizing  count.
+    Pattern does not need to actually appear as a substring of text.
+    
+    Output:
+        - list of patterns (lexicographical)
