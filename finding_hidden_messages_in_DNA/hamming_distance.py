@@ -1,9 +1,5 @@
 
 
-from pattern_to_number_and_back import *
-from reverse_complement import *
-
-
 def hamming_distance(p, q):
     mismatches = []
     if len(p) != len(q):
@@ -34,32 +30,3 @@ def approximate_pattern_count(text, pattern, d):
         if mismatches <= d:
             count += 1
     return count
-
-
-def frequent_words_with_mismatches(text, k, d):
-    words = []
-    all = {}
-    for i in range(4**k):
-        pattern = number_to_pattern(i, k)
-        all[number_to_pattern(i, k)] = approximate_pattern_count(text, pattern, d)
-    max_freq = max(all.values())
-    for key, value in all.items():
-        if value == max_freq:
-            words.append(key)
-    return words
-
-
-def frequent_words_with_mismatches_and_reverse(text, k, d):
-    words = []
-    all = {}
-    for i in range(4**k):
-        pattern = number_to_pattern(i, k)
-        reverse_pattern = reverse_complement(pattern)
-        count = approximate_pattern_count(text, pattern, d)
-        reverse_count = approximate_pattern_count(text, reverse_pattern, d)
-        all[number_to_pattern(i, k)] = count + reverse_count
-    max_freq = max(all.values())
-    for key, value in all.items():
-        if value == max_freq:
-            words.append(key)
-    return words

@@ -2,7 +2,7 @@
 
 import os
 from skew_array import *
-from neighbors import *
+from search_frequent_words import *
 import timeit
 
 
