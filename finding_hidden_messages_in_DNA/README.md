@@ -199,27 +199,9 @@ Eg. CGAAT and CGGAC have 2 mismatches (**Hamming distance**).
     Couns approximate matching(no more than d) patterns.    
     Output:
          - integer
-    
-**frequent_words_with_mismatches(text, k, d)**
-
-    Finds most frequent k-mer with up to d mismatches in text simply counting approximate patterns for each possiable patterns (4**k) and finding the maximizing  count.
-    Pattern does not need to actually appear as a substring of text.
-    
-    Output:
-        - list of patterns (lexicographical)
-        
-**frequent_words_with_mismatches_and_reverse(text, k, d)**
-
-    Finds most frequent k-mer with up to d mismatches and reverse matches in the text.
-    Count(pattern)+count(reverse pattern) and finding the maximizing  count.
-    Pattern does not need to actually appear as a substring of text.
-    
-    Output:
-        - list of patterns (lexicographical)
 
 
 #   neighbors.py
-
 The goal is to generate the d-neighborhood Neighbors(Pattern, d), the set of all k-mers whose Hamming distance from Pattern does not exceed d.
 
 **immediate_neighbors(pattern)**
@@ -265,6 +247,26 @@ The goal is to generate the d-neighborhood Neighbors(Pattern, d), the set of all
     
     Output:
         - set of all k-mers whose Hamming distance is d
+
+
+#   search_frequent_words.py    
+**frequent_words_with_mismatches(text, k, d)**
+
+    Finds most frequent k-mer with up to d mismatches in text simply counting approximate patterns for each possiable patterns (4**k) and finding the maximizing  count.
+    Pattern does not need to actually appear as a substring of text.
+    
+    Output:
+        - list of patterns (lexicographical)
+        
+**frequent_words_with_mismatches_and_reverse(text, k, d)**
+
+    Finds most frequent k-mer with up to d mismatches and reverse matches in the text.
+    Count(pattern)+count(reverse pattern) and finding the maximizing  count.
+    Pattern does not need to actually appear as a substring of text.
+    
+    Output:
+        - list of patterns (lexicographical)
+        
 
 **frequent_words_with_mismatches_sorting(text, k, d)**
 
