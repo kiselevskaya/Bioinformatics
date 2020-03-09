@@ -69,3 +69,16 @@
         
     Output:
         - float number
+        
+
+# median_sorting.py
+
+**median_sorting(dna, k)**
+
+    MedianString(Dna, k)
+        distance ← ∞
+        for each k-mer Pattern from AA…AA to TT…TT
+            if distance > d(Pattern, Dna)
+                 distance ← d(Pattern, Dna)
+                 Median ← Pattern
+        return Median
