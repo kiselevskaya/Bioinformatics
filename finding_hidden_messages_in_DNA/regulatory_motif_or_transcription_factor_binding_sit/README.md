@@ -82,3 +82,14 @@
                  distance ← d(Pattern, Dna)
                  Median ← Pattern
         return Median
+        
+        
+# profile_most_probable_kmer.py
+
+**probability(motif, profile)**
+
+    Multiplication of values from profile for each nucleotide in the given motif.
+
+**profile_most_probable_kmer(text, k, profile)**
+
+    Finds the most probable k-mer motif according to the given profile.
