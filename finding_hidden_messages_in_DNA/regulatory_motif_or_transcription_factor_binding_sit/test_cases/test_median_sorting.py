@@ -2,6 +2,7 @@
 
 from median_sorting import *
 import unittest
+import os
 
 
 class TestMedianSorting(unittest.TestCase):
@@ -38,21 +39,15 @@ class TestMedianSorting(unittest.TestCase):
         b = ['AAG', 'AAT']
         self.assertIn(a, b)
 
-    @unittest.SkipTest
+    # @unittest.SkipTest
     def test_median_sorting_4(self):
-        dna = ['CAGATGGCTTTCGTGCGTTATCAATACTAGTTGTACGAGCCC',
-               'CCCCTATCAGCGCAGTATGCGAACCTGAGCAGTACCTACGAG',
-               'TCGCAGAACTAATCCGGTTTCGGTAGAGCCAACTTCTACCAG',
-               'TACAACGCCTCGTACTAGGATACCTGTGAAGGTTATGCGCTT',
-               'TACTAGAACACAAAGATTGTTCATGCGCAGGGCAATCTGATA',
-               'CAAAAGCTGTCAGCACAATACCAGACTCGCTTGACTCGATGG',
-               'TAATCATTACTTTACGAGAACATGACAAAAAGCCAGGCTACA',
-               'TACTAGTCAGCGGTTTAATGTCAGATTGAGATAAGTTTAAAC',
-               'TTCAGCGCCTGCTACAAGTGACCGGTACGAGGCTGATAAAAG',
-               'GTACTTCCGTTGATTATCTACTAGGTGGTCGGTCCCGCTACC']
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\dataset_158_9.txt', 'r')
+        dna = [string.strip('\n') for string in dataset.readlines()[1:]]
+        dataset.close()
         k = 6
         a = median_sorting(dna, k)
-        b = ''
+        b = 'TTGAGT'
         self.assertEqual(a, b)
 
 
