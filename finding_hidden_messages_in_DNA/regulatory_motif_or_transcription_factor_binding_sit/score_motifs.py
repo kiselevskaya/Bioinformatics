@@ -21,8 +21,8 @@ def get_count(motifs):
 def get_score(motifs):
     consensus = list(get_consensus(motifs))
     mismatches = 0
-    for motif in motifs:
-        mismatches += sum(1 for i, j in zip(motif, consensus) if i != j)
+    for m in range(len(motifs)):
+        mismatches += sum(1 for i, j in zip(motifs[m], consensus) if i != j)
     return mismatches
 
 
@@ -30,7 +30,7 @@ def profile_matrix(motifs):
     t = len(motifs)
     profile = get_count(motifs)
     for key in profile:
-        profile[key] = [float(round(counts/t, 1)) for counts in profile[key]]
+        profile[key] = [counts/t for counts in profile[key]]
     return profile
 
 
