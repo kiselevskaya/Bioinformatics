@@ -119,7 +119,7 @@
         for each k-mer Motif in the first string from Dna
             Motif1 ← Motif
             for i = 2 to t
-                form Profile from motifs Motif1, …, Motifi - 1
+                **form Profile from motifs Motif1, …, Motifi - 1**
                 Motifi ← Profile-most probable k-mer in the i-th string in Dna
             Motifs ← (Motif1, …, Motift)
             if Score(Motifs) < Score(BestMotifs)
@@ -130,3 +130,39 @@
     
     Output:
         - list of motifs
+
+**greedy_motif_search_with_pseudocounts(dna, k, t)**
+
+    Profile matrix is generated using count with pseudocounts.
+
+    GreedyMotifSearch(Dna, k, t)
+        form a set of k-mers BestMotifs by selecting 1st k-mers in each string from Dna
+        for each k-mer Motif in the first string from Dna
+            Motif1 ← Motif
+            for i = 2 to t
+                **apply Laplace's Rule of Succession to form Profile from motifs Motif1, …, Motifi-1**
+                Motifi ← Profile-most probable k-mer in the i-th string in Dna
+            Motifs ← (Motif1, …, Motift)
+            if Score(Motifs) < Score(BestMotifs)
+                BestMotifs ← Motifs
+        output BestMotifs
+        
+    Output:
+        - list of motifs
+
+
+# profile_matrix_with_pseudocounts.py
+
+**count_with_pseudocounts(motifs)**
+
+    Function takes a list of strings (motifs) as input and returns the count matrix of (motifs) with pseudocounts (added a small number) as a dictionary of lists.
+    Output: 
+        - dictionary where keys are nucleotides(A, C, G, T), values are lists (with counted motif nucleotides plus pseudocount)
+    
+    
+**profile_matrix_with_pseudocounts(motifs)**
+
+    Function takes a list of strings (motifs) as input and returns the profile matrix of (motifs) with pseudocounts as a dictionary of lists.
+    The sum total of each column is the denominator of profile motifs is.
+    Output: 
+        - profile matrix as a dictionary where keys are nucleotides(A, C, G, T), values are lists
