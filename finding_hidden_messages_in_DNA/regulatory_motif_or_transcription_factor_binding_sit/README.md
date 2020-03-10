@@ -166,3 +166,22 @@
     The sum total of each column is the denominator of profile motifs is.
     Output: 
         - profile matrix as a dictionary where keys are nucleotides(A, C, G, T), values are lists
+
+
+# distance_between_pattern_and_string.py
+
+**distance_between_pattern_and_strings(pattern, dna)**
+
+    DistanceBetweenPatternAndStrings(Pattern, Dna)
+    k ← |Pattern|
+    distance ← 0
+    for each string Text in Dna
+        HammingDistance ← ∞
+        for each k-mer Pattern’ in Text
+            if HammingDistance > HammingDistance(Pattern, Pattern’)
+                HammingDistance ← HammingDistance(Pattern, Pattern’)
+        distance ← distance + HammingDistance
+    return distance
+    
+    Output:
+        - integer
