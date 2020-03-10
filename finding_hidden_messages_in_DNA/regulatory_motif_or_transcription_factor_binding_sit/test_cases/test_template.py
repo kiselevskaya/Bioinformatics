@@ -18,7 +18,14 @@
 # if __name__ == '__main__':
 #     unittest.main()
 
-import timeit
-start = timeit.default_timer()
-stop = timeit.default_timer()
-print("Program Executed in", stop-start)
+# import timeit
+# start = timeit.default_timer()
+# stop = timeit.default_timer()
+# print("Program Executed in", stop-start)
+
+# import os
+# data_dir = os.getcwd()+'\\text_files'
+# data_dir = os.path.abspath('..\\text_files')
+# dataset = open(data_dir+'\\dataset_159_5.txt', 'r')
+# dna = [string.strip('\n') for string in dataset.readlines()[1:]]
+# dataset.close()

@@ -83,13 +83,50 @@
                  Median ← Pattern
         return Median
         
+    d(k-mer, collection of strings) -- where each string's length is at least equal to k.
+    Say that Dna = {AGACCAGC, ACGTT, CACCCATGTCGG}.
+    In this case, d(Pattern, Dna) is equal to the sum of distances:
+        d(ACGT, AGACCAGC) + d(ACGT, ACGTT) + d(ACGT, CACCCATGTCGT) = 2 + 0 + 1 = 3.
+         
+    Output:
+        - string (a k-mer Pattern that minimizes d(Pattern, Dna) among all possible choices of k-mers)
+        
         
 # profile_most_probable_kmer.py
 
 **probability(motif, profile)**
-
+        
     Multiplication of values from profile for each nucleotide in the given motif.
+    Output:
+        - float
 
 **profile_most_probable_kmer(text, k, profile)**
 
-    Finds the most probable k-mer motif according to the given profile.
+    Generating a random string based on a profile matrix by selecting the i-th nucleotide in the string with the probability corresponding to that nucleotide in the i-th column of the profile matrix.
+    The probability that a profile matrix will produce a given string is given by the product of individual nucleotide probabilities.
+    
+    Output:
+        - string (k-mer most probable motif)
+
+# greedy_motif_search.py
+
+**greedy_motif_search(dna, k, t)**
+    
+    Greedy algorithms select the “most attractive” alternative at each iteration.
+    
+    GreedyMotifSearch(Dna, k, t)
+        BestMotifs ← motif matrix formed by first k-mers in each string from Dna
+        for each k-mer Motif in the first string from Dna
+            Motif1 ← Motif
+            for i = 2 to t
+                form Profile from motifs Motif1, …, Motifi - 1
+                Motifi ← Profile-most probable k-mer in the i-th string in Dna
+            Motifs ← (Motif1, …, Motift)
+            if Score(Motifs) < Score(BestMotifs)
+                BestMotifs ← Motifs
+        return BestMotifs
+                
+    http://www.mrgraeme.co.uk/greedy-motif-search/    
+    
+    Output:
+        - list of motifs
