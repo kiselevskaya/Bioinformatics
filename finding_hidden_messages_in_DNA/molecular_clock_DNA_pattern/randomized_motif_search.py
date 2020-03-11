@@ -42,7 +42,7 @@ def randomized_motif_search(dna, k, t):
             return best_motifs
 
 
-def loop(n, dna, k, t):
+def loop_randomized_motif_search(n, dna, k, t):
     best_motifs = randomized_motif_search(dna, k, t)
     for i in range(n):
         motifs_array = randomized_motif_search(dna, k, t)

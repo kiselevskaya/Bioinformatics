@@ -40,3 +40,48 @@ However, in this particular case, the motif score must eventually stop improving
     
     Output:
         - list of strings (motifs with approximate best score)
+
+
+# gibbs_sampler.py
+
+**normalize(probabilities)**
+
+    To rescale a collection of probabilities so that these probabilities sum to 1.
+    This function takes a dictionary <probabilities> whose keys are k-mers and whose values are the probabilities of these k-mers (which do not necessarily sum to 1).
+    The function should divide each value in <probabilities> by the sum of all values in  <probabilities>, then return the resulting dictionary.
+    
+    Output:
+        - dictionary of k-mers probabilities
+    
+**weighted_die(probabilities)**
+
+    To simulate rolling a die so that "ccgG" has probability 4/80, "cgGC" has probability 8/80, and so on.
+    Function is generating a random number p between 0 and 1. If p is between 0 and 4/80, then it corresponds to "ccgG". If p is between 4/80 and 4/80 + 8/80, then it corresponds to "cgGC", etc.
+    This function takes a dictionary <probabilities> whose keys are k-mers and whose values are the <probabilities> of these k-mers.
+    
+    Output:
+        - string (randomly chosen k-mer key with respect to the values in <probabilities>)
+
+**profile_generated_string(text, profile, k)**
+
+    Range over all possible k-mers in Text, computing the probability of each one and placing this probability into a dictionary.
+    Normalize these probabilities using the normalize(probabilities) function, and then return the result of rolling a weighted die over this dictionary to produce a k-mer.
+    
+    Output:
+        - string (k-mer)
+    
+**gibbs_sampler(dna, k, t, N)**
+
+    GibbsSampler(Dna, k, t, N)
+        randomly select k-mers Motifs = (Motif1, …, Motift) in each string from Dna
+        BestMotifs ← Motifs
+        for j ← 1 to N
+            i ← Random(t)
+            Profile ← profile matrix constructed from all strings in Motifs except for Motifi
+            Motifi ← Profile-randomly generated k-mer in the i-th sequence
+            if Score(Motifs) < Score(BestMotifs)
+                BestMotifs ← Motifs
+        return BestMotifs
+    
+    Output:
+        - list of strings (motifs with approximate best score)
