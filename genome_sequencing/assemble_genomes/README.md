@@ -20,3 +20,13 @@
     
     Output:
         - string represented reconstructed genome
+        
+
+**overlap(pattern)**
+
+    Finds overlaps in patterns.
+    Terms prefix and suffix refer to the first k − 1 nucleotides and last k − 1 nucleotides of a k-mer, respectively.
+        eg. Suffix(TAA) = Prefix(AAT) = AA
+    
+    Output:
+        - dictionary (network of nodes connected by edges)
