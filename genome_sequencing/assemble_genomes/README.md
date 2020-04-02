@@ -30,3 +30,20 @@
     
     Output:
         - dictionary (network of nodes connected by edges)
+
+
+**de_bruijnk(text, k)**
+
+    Given a genome Text, PathGraphk(Text) is the path consisting of |Text| - k + 1 edges, where the i-th edge of this path is labeled by the i-th k-mer in Text and the i-th node of the path is labeled by the i-th (k - 1)-mer in Text.
+    The de Bruijn graph DeBruijnk(Text) is formed by gluing identically labeled nodes in PathGraphk(Text).
+    
+    Output:
+        - dictionary where keys are prefixes (the first nodes of the edge) and values are suffixes (the second nodes edge)
+
+
+**de_bruijnk_graph(patterns)**
+
+    Create the De Bruijnk graph from list of k-mers.
+    Output:
+        - dictionary where keys are prefixes (the first nodes of the edge) and values are suffixes (the second nodes edge)
+

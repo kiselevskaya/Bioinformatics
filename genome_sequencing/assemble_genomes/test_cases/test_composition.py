@@ -177,6 +177,96 @@ class TestComposition(unittest.TestCase):
         b = dict((y[0], y[2:]) for y in (x.split() for x in output))
         self.assertCountEqual(a, b)
 
+    @unittest.SkipTest
+    def test_de_bruijnk_graph_0(self):
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\deBruijnGraphPatterns\\inputs\\sample.txt', 'r')
+        input = [string.strip('\n') for string in dataset.readlines()]
+        dataset.close()
+
+        data = open(data_dir+'\\deBruijnGraphPatterns\\outputs\\sample.txt', 'r')
+        output = [string.strip('\n') for string in data.readlines()]
+        data.close()
+
+        a = de_bruijnk_graph(input)
+        b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
+        self.assertCountEqual(a, b)
+
+    @unittest.SkipTest
+    def test_de_bruijnk_graph_1(self):
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\deBruijnGraphPatterns\\inputs\\test1.txt', 'r')
+        input = [string.strip('\n') for string in dataset.readlines()]
+        dataset.close()
+
+        data = open(data_dir+'\\deBruijnGraphPatterns\\outputs\\test1.txt', 'r')
+        output = [string.strip('\n') for string in data.readlines()]
+        data.close()
+
+        a = de_bruijnk_graph(input)
+        b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
+        self.assertCountEqual(a, b)
+
+    @unittest.SkipTest
+    def test_de_bruijnk_graph_2(self):
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\deBruijnGraphPatterns\\inputs\\test2.txt', 'r')
+        input = [string.strip('\n') for string in dataset.readlines()]
+        dataset.close()
+
+        data = open(data_dir+'\\deBruijnGraphPatterns\\outputs\\test2.txt', 'r')
+        output = [string.strip('\n') for string in data.readlines()]
+        data.close()
+
+        a = de_bruijnk_graph(input)
+        b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
+        self.assertCountEqual(a, b)
+
+    @unittest.SkipTest
+    def test_de_bruijnk_graph_3(self):
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\deBruijnGraphPatterns\\inputs\\test3.txt', 'r')
+        input = [string.strip('\n') for string in dataset.readlines()]
+        dataset.close()
+
+        data = open(data_dir+'\\deBruijnGraphPatterns\\outputs\\test3.txt', 'r')
+        output = [string.strip('\n') for string in data.readlines()]
+        data.close()
+
+        a = de_bruijnk_graph(input)
+        b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
+        self.assertCountEqual(a, b)
+
+    @unittest.SkipTest
+    def test_de_bruijnk_graph_4(self):
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\deBruijnGraphPatterns\\inputs\\test4.txt', 'r')
+        input = [string.strip('\n') for string in dataset.readlines()]
+        dataset.close()
+
+        data = open(data_dir+'\\deBruijnGraphPatterns\\outputs\\test4.txt', 'r')
+        output = [string.strip('\n') for string in data.readlines()]
+        data.close()
+
+        a = de_bruijnk_graph(input)
+        b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
+        self.assertCountEqual(a, b)
+
+    @unittest.SkipTest
+    def test_de_bruijnk_graph_5(self):
+        data_dir = os.path.abspath('..\\text_files')
+        dataset = open(data_dir+'\\deBruijnGraphPatterns\\inputs\\dataset_200_8.txt', 'r')
+        input = [string.strip('\n') for string in dataset.readlines()]
+        dataset.close()
+
+        data = open(data_dir+'\\deBruijnGraphPatterns\\outputs\\dataset_200_8.txt', 'r')
+        output = [string.strip('\n') for string in data.readlines()]
+        data.close()
+
+        a = de_bruijnk_graph(input)
+        b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
+        self.assertCountEqual(a, b)
+
 
 if __name__ == '__main__':
     unittest.main()

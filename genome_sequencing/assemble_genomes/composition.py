@@ -37,15 +37,35 @@ def overlap(patterns):
 
 
 def de_bruijnk(text, k):
-    edges = composition(text, k-1)
-    edges = dict((kmer, []) for kmer in sorted(set(edges)))
-    patterns = composition(text, k)
+    # edges = composition(text, k-1)
+    # edges = dict((kmer, []) for kmer in sorted(set(edges)))
+    # patterns = composition(text, k)
+    # for i in range(len(patterns)):
+    #     prefix = patterns[i][:-1]
+    #     suffix = patterns[i][1:]
+    #     for j in range(len(edges.keys())):
+    #         edge = list(edges.keys())[j]
+    #         if prefix == edge:
+    #             edges[edge].append(suffix)
+    # edges = {i: edges[i] for i in edges if edges[i] != []}
+    graph = dict()
+    for i in range(len(text)-k+1):
+        prefix = text[i:i+k-1]
+        suffix = text[i+1:i+k]
+        if prefix not in graph.keys():
+            graph[prefix] = [suffix]
+        else:
+            graph[prefix].append(suffix)
+    return graph
+
+
+def de_bruijnk_graph(patterns):
+    graph = dict()
     for i in range(len(patterns)):
         prefix = patterns[i][:-1]
         suffix = patterns[i][1:]
-        for j in range(len(edges.keys())):
-            edge = list(edges.keys())[j]
-            if prefix == edge:
-                edges[edge].append(suffix)
-    edges = {i: edges[i] for i in edges if edges[i] != []}
-    return edges
+        if prefix not in graph.keys():
+            graph[prefix] = [suffix]
+        else:
+            graph[prefix].append(suffix)
+    return graph
