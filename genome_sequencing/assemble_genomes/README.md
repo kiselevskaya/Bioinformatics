@@ -47,3 +47,11 @@
     Output:
         - dictionary where keys are prefixes (the first nodes of the edge) and values are suffixes (the second nodes edge)
 
+
+**eulerian_cycle(graph)**
+
+    http://www.graph-magics.com/articles/euler.php
+    
+    Output:
+        - euler path as a list
+    
