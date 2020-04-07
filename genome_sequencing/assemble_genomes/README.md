@@ -88,3 +88,16 @@
         
     Output:
         - string of genome
+        
+        
+**k_universal_circular_string(k)**
+
+    Generate all (2^k) possible combinations of 0 and 1 of length k.
+    Creates graph of patterns and eulerian cycle for this graph.
+    Using this cycle creates a string.
+    As string constructed from cycle the suffix len(k-1) is the prefix len(k-1).
+    To make the final string circular and universal (include each pattern only ones) cuts prefix.
+    
+    Output:
+        - binary string of length 2^k
+    
