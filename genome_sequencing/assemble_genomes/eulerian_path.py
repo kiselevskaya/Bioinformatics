@@ -38,4 +38,4 @@ def eulerian_path(graph):
     if path[0] != start:
         path = path[::-1]
 
-    return '->'.join(path)
+    return path

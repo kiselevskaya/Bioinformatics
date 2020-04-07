@@ -75,4 +75,16 @@
        in the graph, having out-degree one smaller than its in-degree (in(w) - out(w) = 1).
     
     Output:
-        - euler path
+        - euler path as a list
+        
+
+**string_reconstruction(patterns)**  
+
+    StringReconstruction(Patterns)
+        dB ← DeBruijn(Patterns)
+        path ← EulerianPath(dB)
+        Text﻿ ← PathToGenome(path)
+        return Text
+        
+    Output:
+        - string of genome

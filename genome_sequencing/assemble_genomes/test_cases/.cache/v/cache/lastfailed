@@ -1,5 +1,6 @@
 {
   "test_composition.py::TestComposition": true,
   "test_eulerian_cycle.py::TestEulerianCycle::test_eulerian_cycle_6": true,
-  "test_eulerian_cycle.py::TestEulerianCycle::test_eulerian_cycle_7": true
+  "test_eulerian_cycle.py::TestEulerianCycle::test_eulerian_cycle_7": true,
+  "test_string_reconstruction.py::TestEulerianPath::test_string_reconstruction_6": true
 }

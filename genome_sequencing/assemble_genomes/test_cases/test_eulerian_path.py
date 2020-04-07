@@ -21,7 +21,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)
@@ -40,7 +40,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)
@@ -59,7 +59,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)
@@ -78,7 +78,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)
@@ -97,7 +97,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)
@@ -116,7 +116,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)
@@ -136,7 +136,7 @@ class TestEulerianPath(unittest.TestCase):
         a = []
         for i in range(10):
             graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-            a.append(eulerian_path(graph))
+            a.append('->'.join(eulerian_path(graph)))
 
         b = output[0]
         self.assertIn(b, a)

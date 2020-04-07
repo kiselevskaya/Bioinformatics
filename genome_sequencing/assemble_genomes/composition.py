@@ -5,8 +5,7 @@ def composition(text, k):
     for i in range(len(text)-k+1):
         kmer = text[i:i+k]
         lst.append(kmer)
-    # return sorted(lst)
-    return lst
+    return sorted(lst)
 
 
 def path_to_genome(path):
@@ -37,17 +36,6 @@ def overlap(patterns):
 
 
 def de_bruijnk(text, k):
-    # edges = composition(text, k-1)
-    # edges = dict((kmer, []) for kmer in sorted(set(edges)))
-    # patterns = composition(text, k)
-    # for i in range(len(patterns)):
-    #     prefix = patterns[i][:-1]
-    #     suffix = patterns[i][1:]
-    #     for j in range(len(edges.keys())):
-    #         edge = list(edges.keys())[j]
-    #         if prefix == edge:
-    #             edges[edge].append(suffix)
-    # edges = {i: edges[i] for i in edges if edges[i] != []}
     graph = dict()
     for i in range(len(text)-k+1):
         prefix = text[i:i+k-1]
