@@ -49,9 +49,30 @@
 
 
 **eulerian_cycle(graph)**
-
+    
+    EulerianCycle(Graph)
+        form a cycle Cycle by randomly walking in Graph (don't visit the same edge twice!)
+        while there are unexplored edges in Graph
+            select a node newStart in Cycle with still unexplored edges
+            form Cycle’ by traversing Cycle (starting at newStart) and then randomly walking 
+            Cycle ← Cycle’
+        return Cycle
+        
     http://www.graph-magics.com/articles/euler.php
     
     Output:
-        - euler path as a list
+        - euler cycle as a list
     
+    
+**eulerian_path(graph)**    
+
+
+    Eulerian cycles can begin from any arbitrary node in the graph,
+     if the graph has an Eulerian cycle in it.
+    However, Eulerian paths, if it exists in the graph, are limited to start from a special node, v,
+     in the graph, having outdegree one greater than its indegree (out(v) - in(v) = 1),
+      and limited to end at another special node, w,
+       in the graph, having out-degree one smaller than its in-degree (in(w) - out(w) = 1).
+    
+    Output:
+        - euler path
