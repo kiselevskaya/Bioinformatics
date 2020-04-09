@@ -101,3 +101,19 @@
     Output:
         - binary string of length 2^k
     
+    
+**k_d_mer_composition(text, k, d)**
+
+    Generates the (k,d)-mer composition (composition of all k-mer pairs with d nucleotides in between) of text in lexicographic order.
+    Output:
+        - dictionary, where key is first k-mer and value is list of all second k-mers if there are several
+
+
+**paired_string_reconstruction(pairs, k, d)**
+
+    Creates deBruijn graph from read pairs (similar to k-mers graph function except nodes are the concatenation of 2 nodes)
+    Creates an eulerian path from that graph
+    Reconstruct the string from the nodes.
+    
+    Output:
+        - string
