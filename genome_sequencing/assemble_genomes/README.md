@@ -117,3 +117,24 @@
     
     Output:
         - string
+
+
+**maximal_non_branching_paths(patterns)**
+
+    MaximalNonBranchingPaths(Graph)
+        Paths ← empty list
+        for each node v in Graph
+            if v is not a 1-in-1-out node
+                if out(v) > 0
+                    for each outgoing edge (v, w) from v
+                        NonBranchingPath ← the path consisting of single edge (v, w)
+                        while w is a 1-in-1-out node
+                            extend NonBranchingPath by the edge (w, u) 
+                            w ← u
+                        add NonBranchingPath to the set Paths
+        for each isolated cycle Cycle in Graph
+            add Cycle to Paths
+        return Paths
+        
+    Output:
+        - list of contigs (long, contiguous segments of the genome)
