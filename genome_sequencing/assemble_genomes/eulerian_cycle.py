@@ -23,4 +23,4 @@ def eulerian_cycle(graph):
             stack.pop()
             if not stack:
                 cycle.append(location)
-    return cycle
+    return cycle[::-1]

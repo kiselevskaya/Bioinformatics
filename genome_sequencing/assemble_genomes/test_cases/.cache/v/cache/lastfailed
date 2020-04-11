@@ -5,6 +5,8 @@
   "test_contig.py::TestComposition::test_contig_4": true,
   "test_eulerian_cycle.py::TestEulerianCycle::test_eulerian_cycle_6": true,
   "test_eulerian_cycle.py::TestEulerianCycle::test_eulerian_cycle_7": true,
+  "test_maximal_non_branching_paths.py::TestEulerianPath::test_maximal_non_branching_paths__num_2": true,
+  "test_maximal_non_branching_paths.py::TestEulerianPath::test_maximal_non_branching_paths__num_5": true,
   "test_paired_string_reconstruction.py::TestEulerianPath::test_paired_path_to_genome_3": true,
   "test_string_reconstruction.py::TestEulerianPath::test_string_reconstruction_6": true
 }

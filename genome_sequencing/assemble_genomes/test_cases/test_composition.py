@@ -19,11 +19,11 @@ class TestComposition(unittest.TestCase):
     @unittest.SkipTest
     def test_composition_1(self):
         data_dir = os.path.abspath('..\\text_files')
-        dataset = open(data_dir+'\\dataset_197_3.txt', 'r')
+        dataset = open(data_dir+'\\Composition\\inputs\\dataset_197_3.txt', 'r')
         input = [string.strip('\n') for string in dataset.readlines()]
         dataset.close()
 
-        output = open(data_dir+'\\output_dataset_197_3.txt', 'r')
+        output = open(data_dir+'\\Composition\\outputs\\dataset_197_3.txt', 'r')
         b = [string.strip('\n') for string in output.readlines()]
         output.close()
 
@@ -42,11 +42,11 @@ class TestComposition(unittest.TestCase):
     @unittest.SkipTest
     def test_path_to_genome_1(self):
         data_dir = os.path.abspath('..\\text_files')
-        dataset = open(data_dir+'\\dataset_198_3.txt', 'r')
+        dataset = open(data_dir+'\\Composition\\inputs\\dataset_198_3.txt', 'r')
         input = [string.strip('\n') for string in dataset.readlines()]
         dataset.close()
 
-        output = open(data_dir+'\\output_dataset_198_3.txt', 'r')
+        output = open(data_dir+'\\Composition\\outputs\\dataset_198_3.txt', 'r')
         b = [string.strip('\n') for string in output.readlines()][0]
         output.close()
 
@@ -63,11 +63,11 @@ class TestComposition(unittest.TestCase):
     @unittest.SkipTest
     def test_overlap_1(self):
         data_dir = os.path.abspath('..\\text_files')
-        dataset = open(data_dir+'\\dataset_198_10.txt', 'r')
+        dataset = open(data_dir+'\\Composition\\inputs\\dataset_198_10.txt', 'r')
         input = [string.strip('\n') for string in dataset.readlines()]
         dataset.close()
 
-        data = open(data_dir+'\\output_dataset_198_10.txt', 'r')
+        data = open(data_dir+'\\Composition\\outputs\\dataset_198_10.txt', 'r')
         output = [string.strip('\n') for string in data.readlines()]
         data.close()
 
@@ -158,23 +158,6 @@ class TestComposition(unittest.TestCase):
         k = int(input[0])
         a = de_bruijnk(text, k)
         b = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in output))
-        self.assertCountEqual(a, b)
-
-    @unittest.SkipTest
-    def test_de_bruijnk_5(self):
-        data_dir = os.path.abspath('..\\text_files')
-        dataset = open(data_dir+'\\dataset_199_6.txt', 'r')
-        input = [string.strip('\n') for string in dataset.readlines()]
-        dataset.close()
-
-        data = open(data_dir+'\\output_dataset_199_6.txt', 'r')
-        output = [string.strip('\n') for string in data.readlines()]
-        data.close()
-
-        text = input[1:][0]
-        k = int(input[0])
-        a = de_bruijnk(text, k)
-        b = dict((y[0], y[2:]) for y in (x.split() for x in output))
         self.assertCountEqual(a, b)
 
     @unittest.SkipTest

@@ -115,6 +115,16 @@
     Creates an eulerian path from that graph
     Reconstruct the string from the nodes.
     
+    StringSpelledByGappedPatterns(GappedPatterns, k, d)
+        FirstPatterns ← the sequence of initial k-mers from GappedPatterns
+        SecondPatterns ← the sequence of terminal k-mers from GappedPatterns
+        PrefixString ← StringSpelledByGappedPatterns(FirstPatterns, k)
+        SuffixString ← StringSpelledByGappedPatterns(SecondPatterns, k)
+        for i = k + d + 1 to |PrefixString|
+            if the i-th symbol in PrefixString does not equal the (i - k - d)-th symbol in SuffixString
+                return "there is no string spelled by the gapped patterns"
+        return PrefixString concatenated with the last k + d symbols of SuffixString
+    
     Output:
         - string
 
@@ -137,4 +147,4 @@
         return Paths
         
     Output:
-        - list of contigs (long, contiguous segments of the genome)
+        - list of contigs (long, contiguous segments of the genome, non branching)
