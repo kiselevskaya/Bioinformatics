@@ -48,6 +48,8 @@
         - dictionary where keys are prefixes (the first nodes of the edge) and values are suffixes (the second nodes edge)
 
 
+# eulerian_cycle.py
+
 **eulerian_cycle(graph)**
     
     EulerianCycle(Graph)
@@ -64,6 +66,8 @@
         - euler cycle as a list
     
     
+# eulerian_path.py
+    
 **eulerian_path(graph)**    
 
 
@@ -76,7 +80,9 @@
     
     Output:
         - euler path as a list
+     
         
+# string_reconstruction.py
 
 **string_reconstruction(patterns)**  
 
@@ -89,7 +95,9 @@
     Output:
         - string of genome
         
-        
+
+# k_universal_circular_string.py
+  
 **k_universal_circular_string(k)**
 
     Generate all (2^k) possible combinations of 0 and 1 of length k.
@@ -102,12 +110,16 @@
         - binary string of length 2^k
     
     
+# k_d_mer_composition.py
+    
 **k_d_mer_composition(text, k, d)**
 
     Generates the (k,d)-mer composition (composition of all k-mer pairs with d nucleotides in between) of text in lexicographic order.
     Output:
         - dictionary, where key is first k-mer and value is list of all second k-mers if there are several
 
+
+# paired_string_reconstruction.py
 
 **paired_string_reconstruction(pairs, k, d)**
 
@@ -128,6 +140,8 @@
     Output:
         - string
 
+
+# maximal_non_branching_paths.py
 
 **maximal_non_branching_paths(patterns)**
 

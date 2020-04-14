@@ -38,21 +38,4 @@ def eulerian_path(graph):
     if path[0] != start:
         path = path[::-1]
 
-    return '->'.join(path)
-
-
-if __name__ == '__main__':
-    import os
-    data_dir = os.path.abspath('..\\assemble_genomes\\text_files')
-    dataset = open(data_dir+'\\EulerianPath\\inputs\\sample.txt', 'r')
-    input = [string.strip('\n') for string in dataset.readlines()]
-    dataset.close()
-    data = open(data_dir+'\\EulerianPath\\outputs\\sample.txt', 'r')
-    output = [string.strip('\n') for string in data.readlines()]
-    data.close()
-    print(output)
-    print()
-
-    graph = dict((y[0], y[2:]) for y in (x.replace(',', ' ').split() for x in input))
-    path = eulerian_path(graph)
-    print(path)
+    return path
