@@ -1,65 +1,34 @@
-
-
 from RNA_into_amino_acids import *
 import re
 
 
-def complement(pattern):
+def reverse_complement(pattern):
     complement = ''
     complements = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G'}
     for i in range(len(pattern)):
         complement += complements[pattern[i]]
-    return complement
+    return complement[::-1]
 
 
-def encoded_substrings(dna, peptide, GeneticCode):
-    codon_size = 3
-    substrings = []
-    rna = dna.replace('T', 'U')
-    positions = []
-    for i in range(codon_size):
-        # if 0 interrupts peptide the length of substring will be longer than 3*|peptide|
-        amino_acid = rna_into_amino_acids(rna[i:], GeneticCode)
-        match = ([x.start() for x in re.finditer(peptide, amino_acid)])
-        positions.extend([(x+i)*codon_size for x in match])
-    for pos in positions:
-        substrings.append(dna[pos:pos+(len(peptide)*codon_size)])
-    return substrings
+def rna_to_substring(rna, peptide, GeneticCode):
+    pattern = '0*'.join(list(peptide))
+    aa = rna_into_amino_acids(rna, GeneticCode)
+    pos = [list(i.span()) for i in re.finditer(pattern, aa)]
+    rna_pos = [[(x*3) for x in pos] for pos in pos]
+    sub = [rna[y[0]:y[1]].replace('U', 'T') for y in rna_pos]
+    return sub
 
 
 def find_encoded_peptide(dna, peptide, GeneticCode):
-    dna_substrings = encoded_substrings(dna, peptide, GeneticCode)
-    complement_dna = complement(dna)
-    complement_dna_substrings = encoded_substrings(complement_dna[::-1], peptide, GeneticCode)
-    substrings = dna_substrings + complement_dna_substrings
+    mRNA = dna.replace('T', 'U')
+    rDNA = reverse_complement(dna)
+    rRNA = rDNA.replace('T', 'U')
+    mRNAs = [mRNA[i:] for i in range(3)]
+    rRNAs = [rRNA[j:] for j in range(3)]
+    substrings = []
+    for n in mRNAs:
+        substrings.extend(rna_to_substring(n, peptide, GeneticCode))
+    for m in rRNAs:
+        for l in rna_to_substring(m, peptide, GeneticCode):
+            substrings.append(reverse_complement(l))
     return substrings
-
-
-if __name__ == '__main__':
-    import os
-    data_dir = os.path.abspath('..\\sequence_antibiotics\\text_files')
-    dataset = open(data_dir+'\\RNA_codon_table_1.txt', 'r')
-    GeneticCode = [string.strip('\n') for string in dataset.readlines()]
-    dataset.close()
-    GeneticCode = dict((y[0], y[1] if len(y) != 1 else '') for y in(x.split() for x in GeneticCode))
-
-    # print(find_encoded_peptide('ATGGCCATGGCCCCCAGAACTGAGATCAATAGTACCCGTATTAACGGGTGA', 'MA', GeneticCode))
-
-    data_dir = os.path.abspath('..\\sequence_antibiotics\\text_files')
-    dataset = open(data_dir+'\\EncodedPeptide\\inputs\\dataset_96_7.txt', 'r')
-    input = [string.strip('\n') for string in dataset.readlines()]
-    dataset.close()
-    dna = input[0]
-    peptide = input[1]
-
-    # data_dir = os.path.abspath('..\\sequence_antibiotics\\text_files')
-    # dataset = open(data_dir+'\\EncodedPeptide\\outputs\\dataset.txt', 'r')
-    # output = [string.strip('\n') for string in dataset.readlines()]
-    # dataset.close()
-
-    print('\n'.join(find_encoded_peptide(dna, peptide, GeneticCode)))
-    # print(sorted(output))
-    # print(sorted(find_encoded_peptide(dna, peptide, GeneticCode)) == sorted(output))
-
-
-

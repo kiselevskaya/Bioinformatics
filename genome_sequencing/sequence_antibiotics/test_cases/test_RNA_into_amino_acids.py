@@ -2,11 +2,12 @@
 
 from RNA_into_amino_acids import *
 import unittest
+import os
 
 
 class TestRNAintoAminoAcids(unittest.TestCase):
 
-    # @unittest.SkipTest
+    @unittest.SkipTest
     def test_rna_into_amino_acids_0(self):
         data_dir = os.path.abspath('..\\text_files')
         dataset = open(data_dir+'\\RNAintoAminoAcids\\inputs\\dataset.txt', 'r')
