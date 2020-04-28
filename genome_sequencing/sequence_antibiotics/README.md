@@ -123,3 +123,14 @@
     Transfers peptide from an alphabetic form into the sequence of mass
     Output:
         - string of unique sequences of masses
+        
+
+# score_peptide.py   
+
+**score_peptide(peptide, spectrum)**
+
+    Counts matches of a theoretical spectrum of a peptide and experimental.
+        Mass spectrometers generate "noisy" spectra that are far from ideal — they are characterized by having both **false masses** and **missing masses**.
+
+    Output:
+        - an integer number of matches
