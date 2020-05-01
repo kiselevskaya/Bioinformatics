@@ -153,6 +153,7 @@
                     remove Peptide from Leaderboard
             Leaderboard ← Trim(Leaderboard, Spectrum, N)
         output LeaderPeptide
-        
+            (A cut should include anyone who is tied with the Nth-place competitor. Thus, Leaderboard should be trimmed down to the “N highest-scoring linear peptides including ties”, which may include more than N peptides.)
+    
     Output:
-        - best suited peptide
+        - best suited peptide (multiple solutions may exist)

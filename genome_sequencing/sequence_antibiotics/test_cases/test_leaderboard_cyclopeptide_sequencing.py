@@ -15,7 +15,7 @@ class TestcLeaderboardCyclopeptideSequencing(unittest.TestCase):
         a = '-'.join([str(MassDictionary[x]) for x in leaderboard_cyclopeptide_sequencing(spectrum, n)])
         self.assertEqual(a, b)
 
-    # Failed
+    # Failed (multiple solutions may exist)
     @unittest.SkipTest
     def test_leaderboard_cyclopeptide_sequencing_1(self):
         data_dir = os.path.abspath('..\\text_files')

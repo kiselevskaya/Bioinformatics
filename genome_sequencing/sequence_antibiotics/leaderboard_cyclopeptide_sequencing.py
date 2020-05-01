@@ -32,6 +32,9 @@ def leaderboard_cyclopeptide_sequencing(spectrum, n):
                     if mass == spectrum[-1]:
                         if score > leader_peptide[2]:
                             leader_peptide = [peptide, mass, score]
-        trim = sorted([value[1] for value in leaderboard.values()])[-n:]
-        leaderboard = {key: leaderboard[key] for key, value in leaderboard.items() if value[1] in trim}
+        try:
+            trim = sorted(leaderboard.items(), key=lambda item: item[1][1])[-n][1][1]
+            leaderboard = {k: v for k, v in leaderboard.items() if v[1] >= trim}
+        except IndexError:
+            continue
     return leader_peptide[0]
