@@ -129,7 +129,7 @@
 
 **score_peptide(peptide, spectrum)**
 
-    Counts matches of a theoretical spectrum of a peptide and experimental.
+    Counts matches of a theoretical cyclospectrum of a peptide and experimental.
         Mass spectrometers generate "noisy" spectra that are far from ideal — they are characterized by having both **false masses** and **missing masses**.
 
     Output:
@@ -137,6 +137,15 @@
 
 
 # leaderboard_cyclopeptide_sequencing.py
+
+**linear_peptide_score(peptide, spectrum)**
+
+    Counts matches of a theoretical linearspectrum of a peptide and experimental.
+        Mass spectrometers generate "noisy" spectra that are far from ideal — they are characterized by having both **false masses** and **missing masses**.
+
+    Output:
+        - an integer number of matches
+    
 
 **leaderboard_cyclopeptide_sequencing(spectrum, n)**
     

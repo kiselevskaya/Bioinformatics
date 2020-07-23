@@ -30,11 +30,30 @@ def leaderboard_cyclopeptide_sequencing(spectrum, n):
                     score = linear_peptide_score(peptide, spectrum)
                     leaderboard[peptide] = [mass, score]
                     if mass == spectrum[-1]:
-                        if score > leader_peptide[2]:
-                            leader_peptide = [peptide, mass, score]
+                        cycloscore = score_peptide(peptide, spectrum)
+                        if cycloscore > leader_peptide[2]:
+                            leader_peptide = [peptide, mass, cycloscore]
         try:
             trim = sorted(leaderboard.items(), key=lambda item: item[1][1])[-n][1][1]
             leaderboard = {k: v for k, v in leaderboard.items() if v[1] >= trim}
         except IndexError:
             continue
     return leader_peptide[0]
+
+
+if __name__ == '__main__':
+    import timeit
+    import os
+    start = timeit.default_timer()
+    data_dir = os.path.abspath('..\\sequence_antibiotics\\text_files')
+    dataset = open(data_dir+'\\LeaderboardCyclopeptideSequencing\\dataset_102_10.txt', 'r')
+    data = [string.strip('\n') for string in dataset.readlines()]
+    dataset.close()
+    spectrum = [int(x) for x in data[1].split()]
+    n = int(data[0])
+
+    a = leaderboard_cyclopeptide_sequencing(spectrum, n)
+    print('-'.join([str(MassDictionary[x]) for x in a]))
+
+    stop = timeit.default_timer()
+    print("Program Executed in", stop-start)
