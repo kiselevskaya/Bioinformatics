@@ -287,3 +287,62 @@
 
     Output:
         - list of n most suited peptides in mass
+        
+
+# real_spectrum_sequencing.py
+
+**peptide_spectrum(peptide, alphabet, type)**
+    
+    Spectrum(Peptide, ExtendedAlphabet, Type)
+    PrefixMass(0) ← 0
+    for i ← 1 to |Peptide|
+        for every symbol s in ExtendedAlphabet
+            if s = i-th amino acid in Peptide
+                PrefixMass(i) ← PrefixMass(i − 1) + AminoAcidMass[s]
+    if Type is cyclic
+        peptideMass ← PrefixMass(|Peptide|)
+        Spectrum ← a list consisting of the single integer 0
+        for i ← 0 to |Peptide| − 1
+            for j ← i + 1 to |Peptide|
+                add PrefixMass(j) − PrefixMass(i) to Spectrum
+                if i > 0 and j < |Peptide|
+                    add peptideMass - (PrefixMass(j) − PrefixMass(i)) to Spectrum     
+    else           
+        Spectrum ← a list consisting of the single integer 0
+        for i ← 0 to |Peptide| − 1
+            for j ← i + 1 to |Peptide|
+                add PrefixMass(j) − PrefixMass(i) to Spectrum
+    return sorted Spectrum    
+    
+    Output:
+        - list of integers corresponding to mass spectrum
+        
+**score_peptide_real_spectrum(peptide, spectrum, alphabet, type)**        
+    
+    Counts matches of an experimental and theoretical linear or cyclic spectrum (depends on type) of a peptide.
+        Mass spectrometers generate "noisy" spectra that are far from ideal — they are characterized by having both **false masses** and **missing masses**.
+
+    Output:
+        - an integer number of matches
+        
+**real_peptide_sequencing(spectrum, n, alphabet)**
+
+    extended_leaderboard_peptide_sequencing(spectrum, n, alphabet) for decimal masses in spectrum
+    
+    Output:
+        - list of best suited peptide (multiple solutions may exist) and dictionary of n most suited peptides with score
+
+    
+**extended_alphabet_real_spectrum(spectrum)**
+
+    **extended_alphabet(m, spectrum)** for decimal masses in spectrum
+
+    Makes an amino acid alphabet from most frequent masses (from 57 to 200) in the convolution spectrum.
+    Frequency determines by mass equal to mass on position m and higher.
+    
+    Output:
+        - amino acids dictionary
+    
+**real_spectrum_sequencing(n, spectrum)**
+
+    Should return the best suited peptide for given real spectrum
