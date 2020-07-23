@@ -166,3 +166,124 @@
     
     Output:
         - best suited peptide (multiple solutions may exist)
+        
+        
+# n_leaderboard_peptide_sequencing.py
+
+**linear_peptide_score(peptide, spectrum)**
+
+    Counts matches of a theoretical linearspectrum of a peptide and experimental.
+        Mass spectrometers generate "noisy" spectra that are far from ideal — they are characterized by having both **false masses** and **missing masses**.
+
+    Output:
+        - an integer number of matches
+
+**n_leaderboard_peptide_sequencing(spectrum, n, alphabet)**
+
+    ExtendedLeaderboardCyclopeptideSequencing(Spectrum, N, ExtendedAlphabet)
+        Leaderboard ← set containing only the empty peptide
+        LeaderPeptide ← empty peptide
+        N_Laderboard ← empty dictionary
+        while Leaderboard is non-empty
+            Leaderboard ← Expand(Leaderboard)
+            for each Peptide in Leaderboard
+                if Mass(Peptide) = ParentMass(Spectrum)
+                    N_Laderboard ← Peptide
+                    if Score(Peptide, Spectrum) > Score(LeaderPeptide, Spectrum)
+                        LeaderPeptide ← Peptide
+                else if Mass(Peptide) > ParentMass(Spectrum)
+                    remove Peptide from Leaderboard
+            Leaderboard ← Trim(Leaderboard, Spectrum, N)
+        output N_Laderboard
+            (A cut should include anyone who is tied with the Nth-place competitor. Thus, Leaderboard should be trimmed down to the “N highest-scoring linear peptides including ties”, which may include more than N peptides.)
+    
+    Output:
+        - list of n most suited peptides in mass
+
+
+# extended_leaderboard_peptide_sequencing.py
+
+**extended_spectrum(peptide, alphabet, type)**
+
+    Spectrum(Peptide, ExtendedAlphabet, Type)
+    PrefixMass(0) ← 0
+    for i ← 1 to |Peptide|
+        for every symbol s in ExtendedAlphabet
+            if s = i-th amino acid in Peptide
+                PrefixMass(i) ← PrefixMass(i − 1) + AminoAcidMass[s]
+    if Type is cyclic
+        peptideMass ← PrefixMass(|Peptide|)
+        Spectrum ← a list consisting of the single integer 0
+        for i ← 0 to |Peptide| − 1
+            for j ← i + 1 to |Peptide|
+                add PrefixMass(j) − PrefixMass(i) to Spectrum
+                if i > 0 and j < |Peptide|
+                    add peptideMass - (PrefixMass(j) − PrefixMass(i)) to Spectrum     
+    else           
+        Spectrum ← a list consisting of the single integer 0
+        for i ← 0 to |Peptide| − 1
+            for j ← i + 1 to |Peptide|
+                add PrefixMass(j) − PrefixMass(i) to Spectrum
+    return sorted Spectrum    
+    
+    Output:
+        - list of integers corresponding to mass spectrum
+
+**extended_score_peptide(peptide, spectrum, alphabet, type)**
+
+    Counts matches of an experimental and theoretical linear or cyclic spectrum (depends on type) of a peptide.
+    Uses extended alphabet for all amino acids with mass from 57 to 200 including.
+        Mass spectrometers generate "noisy" spectra that are far from ideal — they are characterized by having both **false masses** and **missing masses**.
+
+    Output:
+        - an integer number of matches
+
+**extended_leaderboard_peptide_sequencing(spectrum, n, alphabet)**
+
+    ExtendedLeaderboardCyclopeptideSequencing(Spectrum, N, ExtendedAlphabet)
+        Leaderboard ← set containing only the empty peptide
+        LeaderPeptide ← empty peptide
+        N_Laderboard ← empty dictionary
+        while Leaderboard is non-empty
+            Leaderboard ← Expand(Leaderboard)
+            for each Peptide in Leaderboard
+                if Mass(Peptide) = ParentMass(Spectrum)
+                    N_Laderboard ← Peptide
+                    if Score(Peptide, Spectrum) > Score(LeaderPeptide, Spectrum)
+                        LeaderPeptide ← Peptide
+                else if Mass(Peptide) > ParentMass(Spectrum)
+                    remove Peptide from Leaderboard
+            Leaderboard ← Trim(Leaderboard, Spectrum, N)
+        output LeaderPeptide
+            (A cut should include anyone who is tied with the Nth-place competitor. Thus, Leaderboard should be trimmed down to the “N highest-scoring linear peptides including ties”, which may include more than N peptides.)
+    
+    Output:
+        - list of best suited peptide (multiple solutions may exist) and dictionary of n most suited peptides with score
+
+
+# spectral_convolution.py
+     
+**spectral_convolution(spectrum)**
+
+    Defines the convolution of a spectrum by taking all positive differences of masses in the spectrum.
+    
+    Output:
+        - list of integers
+        
+        
+# convolution_cyclopeptide_sequencing.py
+
+**extended_alphabet(m, spectrum)**
+
+    Makes an amino acid alphabet from most frequent masses (from 57 to 200) in the convolution spectrum.
+    Frequency determines by mass equal to mass on position m and higher.
+    
+    Output:
+        - amino acids dictionary
+
+**convolution_cyclopeptide_sequencing(m, n, spectrum)**    
+    
+    Runs extended_leaderboard_peptide_sequencing(spectrum, n, alphabet) with extended alphabet for most frequent masses in the convolution spectrum.
+
+    Output:
+        - list of n most suited peptides in mass
