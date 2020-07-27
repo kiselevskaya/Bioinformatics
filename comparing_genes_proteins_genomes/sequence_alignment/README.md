@@ -16,6 +16,13 @@
 
 **manhattan_tourist(n, m, down, right)**
     
+    Tourist in Midtown Manhattan want to see as many sights as possible on their way from the corner of 59th Street and 8th Avenue to the corner of 42nd Street and 3rd Avenue.
+    However, they are short on time, and at each intersection, they can only move south (↓) or east (→).
+    They can choose from many different paths through the map, but no path will visit all the sights.
+    The challenge of finding a legal path through the city that visits the most sights is called the Manhattan Tourist Problem.
+    
+    Finds the length of a longest path in a rectangular grid.
+    
     ManhattanTourist(n, m, Down, Right)
         s0, 0 ← 0
         for i ← 1 to n
