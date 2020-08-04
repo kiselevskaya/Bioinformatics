@@ -36,3 +36,33 @@
     
     Output:
         - integer representind the biggest weight in path from position 0,0 to n,m
+        
+
+# longest_common_subsequence_backtrack.py
+
+**longest_common_subsequence_backtrack(v, w)**
+
+    Assigns a weight of 1 to the edges in DAG (DirectedAlignmentGraph(v, w)) corresponding to matches and assign a weight of 0 to all other edges, then s|v|, |w| gives the length of an LCS.
+    Algorithm maintains a record of which edge was used to compute each value si, j by utilizing backtracking pointers, which take one of the three values ↓ , →, or ↘. Backtracking pointers are stored in a matrix Backtrack.
+
+    LCSBackTrack(v, w)
+        for i ← 0 to |v|
+            si, 0 ← 0
+        for j ← 0 to |w| 
+            s0, j ← 0
+        for i ← 1 to |v|
+            for j ← 1 to |w|
+                match ← 0
+                if vi-1 = wj-1
+                    match ← 1
+                si, j ← max{si-1, j , si,j-1 , si-1, j-1 + match }
+                if si,j = si-1,j
+                    Backtracki, j ← "↓"
+                else if si, j = si, j-1
+                    Backtracki, j ← "→"
+                else if si, j = si-1, j-1 + match
+                    Backtracki, j ← "↘"
+        return Backtrack
+    
+    Output:
+        - matrix of backtracking pointers, which take one of the three values ↓ , →, or ↘
