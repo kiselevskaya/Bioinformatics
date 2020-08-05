@@ -66,3 +66,26 @@
     
     Output:
         - matrix of backtracking pointers, which take one of the three values ↓ , →, or ↘
+        
+        
+**output_lcs(backtrack, v, i, j)**
+
+    A string is a subsequence of a string v if it can be obtained by deleting some symbols from v. 
+    For example, GC and GAT are both subsequences of GACT. 
+    A string x is a common subsequence of strings v and w if it is a subsequence of both v and w.
+    For example, G and AT are both common subsequences of GACT and ATG.
+    The goal is to find a longest common subsequence (LCS) of two strings.
+    Two strings may have more than one longest common subsequence.
+
+    OutputLCS(backtrack, v, i, j)
+        if i = 0 or j = 0
+            return ""
+        if backtracki, j = "↓"
+            ﻿return OutputLCS(backtrack, v, i - 1, j)
+        else if backtracki, j = "→"
+            return OutputLCS(backtrack, v, i, j - 1)
+        else
+            return OutputLCS(backtrack, v, i - 1, j - 1) + vi
+                    
+    Output:
+        - longest common subsequence of two strings
